@@ -13,8 +13,8 @@ units:
   default_autobind: 10
   kx: cx
   ky: cy
-  px: kx + 2
-  py: ky + 2
+  px: kx + 1
+  py: ky + 1
 points:
   zones:
     matrix:
@@ -64,17 +64,23 @@ outlines:
     fillet: 12
     points:
       - ref: matrix_pinky_top
-        shift: [-kx,ky]
-      - ref: matrix_middle_top
-        shift: [0,ky]
+        shift: [-px,py]
+      - ref: matrix_ring_top
+        shift: [0,py]
+      - ref: matrix_index_top
+        shift: [0,py]
       - ref: matrix_inner_top
-        shift: [kx,ky]
+        shift: [2px,py]
+      - ref: matrix_inner_bottom
+        shift: [2px,0]
       - ref: thumbfan_far_thumb
-        shift: [kx,ky]
+        shift: [px,py]
       - ref: thumbfan_far_thumb
-        shift: [kx,-ky]
+        shift: [px,-py]
+      - ref: thumbfan_home_thumb
+        shift: [0, -py]
       - ref: matrix_pinky_bottom
-        shift: [-kx,-ky]
+        shift: [-px,-py]
   combo:
   - name: board
   - operation: subtract
