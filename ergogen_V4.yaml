@@ -18,6 +18,9 @@ units:
 points:
   zones:
     matrix:
+      key:
+        padding: cy*1.1
+        spread: cx*1.1
       anchor:
         rotate: 5
       columns:
@@ -85,7 +88,38 @@ outlines:
   - name: board
   - operation: subtract
     name: keys
+pcbs:
+  boardPcb:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      microcontroller:
+        what: promicro
+        params:
+          orientation: "down"
+        where:
+          ref: matrix_inner_top
+          shift: [2px,0]
+          rotate: -90
 cases:
   baseCase:
     - what: outline
-      name: combo
+      name: board
