@@ -54,21 +54,32 @@ points:
         thumb:
   rotate: -15
 outlines:
-  raw:
+  keys:
     - what: rectangle
       where: true
       size: [kx, ky]
-  keys:
-  - what: rectangle
-    where: true
-    size: [kx+1.5,ky+1.5]
   board:
   - what: polygon
     operation: stack
+    fillet: 12
     points:
       - ref: matrix_pinky_top
-        shift: [0,0]
+        shift: [-kx,ky]
+      - ref: matrix_middle_top
+        shift: [0,ky]
       - ref: matrix_inner_top
-        shift: [0,0]
+        shift: [kx,ky]
       - ref: thumbfan_far_thumb
-        shift: [0,0]
+        shift: [kx,ky]
+      - ref: thumbfan_far_thumb
+        shift: [kx,-ky]
+      - ref: matrix_pinky_bottom
+        shift: [-kx,-ky]
+  combo:
+  - name: board
+  - operation: subtract
+    name: keys
+cases:
+  baseCase:
+    - what: outline
+      name: combo
