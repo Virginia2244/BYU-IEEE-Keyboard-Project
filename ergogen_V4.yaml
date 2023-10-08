@@ -1,5 +1,5 @@
 metadata:
-  engine: 3.1.4
+  engine: 4.1
   version: 0.1
   author: Carter Pollan
   contact: carter.pollan@gmail.com
@@ -23,6 +23,7 @@ points:
         spread: cx*1.1
       anchor:
         rotate: 5
+        shift: [150,-100]
       columns:
         pinky:
         ring:
@@ -110,14 +111,15 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -5]
+          shift: [cy/2 -.7,-3]
+          rotate: 90
       microcontroller:
         what: promicro
         params:
           orientation: "down"
         where:
           ref: matrix_inner_top
-          shift: [2px, 0]
+          shift: [px,0]
           rotate: -90
 cases:
   baseCase:
