@@ -15,6 +15,7 @@ units:
   ky: cy
   px: kx + 1
   py: ky + 1
+  ledy: -cx/2 + 3
 points:
   zones:
     matrix:
@@ -23,7 +24,7 @@ points:
         spread: cx*1.1
       anchor:
         rotate: 5
-        shift: [150,-100]
+        shift: [150, -100]
       columns:
         pinky:
         ring:
@@ -111,7 +112,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [cy/2 -.7,-3]
+          shift: [cy/2 -.7, -3]
           rotate: 90
       microcontroller:
         what: promicro
@@ -119,9 +120,42 @@ pcbs:
           orientation: "down"
         where:
           ref: matrix_inner_top
-          shift: [px,0]
+          shift: [px, 0]
           rotate: -90
+      audio:
+        what: trrs
+        params:
+          A: "audioA"
+          B: "audioB"
+          C: "audioC"
+          D: "audioD"
+          reverse: true
+        where:
+          ref: matrix_inner_home
+          shift: [px*1.5, 0]
+          rotate: -90
+      rgbB:
+        what: rgb
+        params:
+          side: "B"
+          din: "din"
+          dout: "dout"
+        where: true
+        adjust:
+          shift: [0, ledy]
+      rgbF:
+        what: rgb
+        params:
+          side: "F"
+          din: "din"
+          dout: "dout"
+        where: true
+        adjust:
+          shift: [0, ledy]
+
+
 cases:
   baseCase:
   - what: outline
     name: board
+    extrude: 1
