@@ -1,0 +1,45 @@
+metadata:
+  engine: 4.0.2
+  version: 0.1
+  designer: Carter Pollan
+  conact: carter.pollan@gmail.com
+units:
+  xspace: cx
+  yspace: cy
+points:
+  zones:
+    matrix:
+      key:
+        padding: yspace
+        spread: xspace
+      columns:
+        pinky:
+        ring:
+          key.origin: [-yspace/2,-xspace/2]
+          key.splay: -4
+          key.stagger: 1
+        middle:
+          key.stagger: 5
+        pointer:
+          key.stagger: -5
+        pointer2:
+      rows:
+        bottom:
+        middle:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_pointer2_bottom
+        shift: [7,-20]
+      columns:
+        away:
+          key.splay: -7
+        home:
+          key.splay: -15
+          key.shift: [3,-3]
+        far:
+          key.splay: -15
+          key.shift: [7,-6]
+      rows:
+        thumb:
+        
