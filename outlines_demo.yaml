@@ -1,0 +1,76 @@
+metadata:
+  engine: 4.0.2
+  version: 0.1
+  designer: Carter Pollan
+  conact: carter.pollan@gmail.com
+units:
+  xspace: cx
+  yspace: cy
+  capsx: 16.5
+  capsy: 16.5
+  pcb_outline_spacingx: capsx/2 + 3
+  pcb_outline_spacingy: capsy/2 + 3
+points:
+  zones:
+    matrix:
+      key:
+        padding: yspace
+        spread: xspace
+      columns:
+        pinky:
+        ring:
+          key.origin: [-yspace/2,-xspace/2]
+          key.splay: -4
+          key.stagger: 1
+        middle:
+          key.stagger: 5
+        pointer:
+          key.stagger: -5
+        pointer2:
+      rows:
+        bottom:
+        middle:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_pointer2_bottom
+        shift: [7,-20]
+      columns:
+        away:
+          key.splay: -7
+        home:
+          key.splay: -15
+          key.shift: [3,-3]
+        far:
+          key.splay: -15
+          key.shift: [7,-6]
+      rows:
+        thumb:
+outlines:
+  keycaps:
+  - what: rectangle
+    where: true
+    size: [capsx,capsy]
+  pcb_outline:
+  - what: polygon
+    operation: stack
+    fillet: 6
+    points:
+    - ref: matrix_pinky_top
+      shift: [-pcb_outline_spacingx,pcb_outline_spacingy]
+    - ref: matrix_middle_top
+      shift: [0,pcb_outline_spacingy]
+    - ref: matrix_pointer2_top
+      shift: [pcb_outline_spacingx*3,pcb_outline_spacingy]
+    - ref: matrix_pointer2_bottom
+      shift: [pcb_outline_spacingx*3,0]
+    - ref: thumbfan_far_thumb
+      shift: [pcb_outline_spacingx,pcb_outline_spacingy]
+    - ref: thumbfan_far_thumb
+      shift: [pcb_outline_spacingx,-pcb_outline_spacingy]
+    - ref: matrix_pinky_bottom
+      shift: [-pcb_outline_spacingx, -pcb_outline_spacingy]
+  panel:
+  - name: pcb_outline
+  - operation: subtract
+    name: keycaps
