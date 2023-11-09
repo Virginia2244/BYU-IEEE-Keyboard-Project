@@ -27,6 +27,9 @@ points:
         shift: [150, -100]
       columns:
         pinky:
+          key:
+            column_net: P10
+            row_net: P8
         ring:
           key.splay: -5
           key.origin: [-12, -19]
@@ -105,6 +108,13 @@ pcbs:
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
+      switch_via:
+        what: via
+        where: true
+        params:
+          net: "{{column_net}}"
+        adjust:
+          shift: [0, cy/2]
       diode:
         what: diode
         where: true
@@ -114,6 +124,7 @@ pcbs:
         adjust:
           shift: [cy/2 -.7, -3]
           rotate: 90
+      
       microcontroller:
         what: promicro
         params:
@@ -126,9 +137,9 @@ pcbs:
         what: trrs
         params:
           A: "audioA"
-          B: "audioB"
-          C: "audioC"
-          D: "audioD"
+          B: "GND"
+          C: "VCC"
+          D: "P9"
           reverse: true
         where:
           ref: matrix_inner_home
@@ -152,8 +163,6 @@ pcbs:
         where: true
         adjust:
           shift: [0, ledy]
-
-
 cases:
   baseCase:
   - what: outline
