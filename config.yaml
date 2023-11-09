@@ -165,6 +165,10 @@ pcbs:
           ref: matrix_inner_home
           shift: [px*2, -10]
           rotate: -90
+      test: 
+        what: mountinghole
+        where: 
+          ref: matrix_inner_home
       rgbB:
         what: rgb
         params:
