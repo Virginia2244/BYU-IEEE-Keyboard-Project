@@ -28,18 +28,30 @@ points:
       columns:
         pinky:
           key:
-            column_net: P10
-            row_net: P8
+            column_net: P1
+            row_net: P2
         ring:
-          key.splay: -5
-          key.origin: [-12, -19]
-          key.stagger: 12
+          key:
+            splay: -5
+            origin: [-12, -19]
+            stagger: 12
+            column_net: P3
+            row_net: P4
         middle:
-          key.stagger: 5
+          key:
+            stagger: 5
+            column_net: P5
+            row_net: P6
         index:
-          key.stagger: -6
+          key:
+            stagger: -6
+            column_net: P7
+            row_net: P8
         inner:
-          key.stagger: -2
+          key:
+            stagger: -2
+            column_net: P10
+            row_net: P16
       rows:
         bottom:
         home:
@@ -50,14 +62,23 @@ points:
         shift: [-7, -19]
       columns:
         near:
+          key:
+            row_net: P6
+            column_net: P14
         home:
-          key.spread: 21.25
-          key.splay: -28
-          key.origin: [-11.75, -9]
+          key:
+            spread: 21.25
+            splay: -28
+            origin: [-11.75, -9]
+            row_net: P8
+            column_net: P14
         far:
-          key.spread: 21.25
-          key.splay: -28
-          key.origin: [-9.5, -9]
+          key:
+            spread: 21.25
+            splay: -28
+            origin: [-9.5, -9]
+            row_net: P16
+            column_net: P14
       rows:
         thumb:
   rotate: -15
@@ -124,7 +145,6 @@ pcbs:
         adjust:
           shift: [cy/2 -.7, -3]
           rotate: 90
-      
       microcontroller:
         what: promicro
         params:
@@ -143,7 +163,7 @@ pcbs:
           reverse: true
         where:
           ref: matrix_inner_home
-          shift: [px*1.5, 0]
+          shift: [px*2, -10]
           rotate: -90
       rgbB:
         what: rgb
