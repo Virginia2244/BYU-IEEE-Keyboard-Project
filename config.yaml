@@ -12,16 +12,16 @@ units:
   default_padding: 'cx'
   default_autobind: 10
   kx: cx
-  ky: cy
-  px: kx + 1
-  py: ky + 1
+  ky: cy - 7
+  px: cx - 7
+  py: ky
   ledy: -cx/2 + 3
 points:
   zones:
     matrix:
       key:
-        padding: cy*1.1
-        spread: cx*1.1
+        padding: cy
+        spread: cx
       anchor:
         rotate: 5
         shift: [150, -100]
@@ -86,28 +86,38 @@ outlines:
   keys:
   - what: rectangle
     where: true
-    size: [kx, ky]
+    size: [cx-.1, cy-.1]
   board:
   - what: polygon
     operation: stack
-    fillet: 12
+    fillet: 3
     points:
     - ref: matrix_pinky_top
       shift: [-px, py]
     - ref: matrix_ring_top
-      shift: [0, py]
-    - ref: matrix_index_top
-      shift: [0, py]
+      shift: [-cx/2, py]
+    - ref: matrix_middle_top
+      shift: [-cx/2, py]
+    - ref: matrix_middle_top
+      shift: [cx/2, py]
     - ref: matrix_inner_top
-      shift: [2px, py]
+      shift: [cx/2, py]
+    - ref: matrix_inner_top
+      shift: [cx*3/2, py]
     - ref: matrix_inner_bottom
-      shift: [2px, 0]
+      shift: [cx*3/2, -cy/2]
     - ref: thumbfan_far_thumb
       shift: [px, py]
     - ref: thumbfan_far_thumb
       shift: [px, -py]
     - ref: thumbfan_home_thumb
-      shift: [0, -py]
+      shift: [cy/2, -py]
+    - ref: thumbfan_home_thumb
+      shift: [-cy/2, -py]
+    - ref: thumbfan_near_thumb
+      shift: [cy/2, -py]
+    - ref: thumbfan_near_thumb
+      shift: [-cy/2, -py]
     - ref: matrix_pinky_bottom
       shift: [-px, -py]
   combo:
