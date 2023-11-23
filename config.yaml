@@ -103,9 +103,9 @@ outlines:
     - ref: matrix_inner_top
       shift: [cx/2, py]
     - ref: matrix_inner_top
-      shift: [cx*3/2, py]
+      shift: [cx*4/2, py]
     - ref: matrix_inner_bottom
-      shift: [cx*3/2, -cy/2]
+      shift: [cx*4/2, -cy/2]
     - ref: thumbfan_far_thumb
       shift: [px, py]
     - ref: thumbfan_far_thumb
@@ -156,12 +156,12 @@ pcbs:
           shift: [cy/2 -.7, -3]
           rotate: 90
       microcontroller:
-        what: promicro
+        what: custom/footprints/seeed_xiao
         params:
           orientation: "down"
         where:
           ref: matrix_inner_top
-          shift: [px, 0]
+          shift: [2*px, -8]
           rotate: -90
       audio:
         what: trrs

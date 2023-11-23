@@ -2,6 +2,6 @@
 	path = footprints/infused-kim
 	url = git@github.com:infused-kim/kb_ergogen_fp.github
 
-[submodule "footprints/virginia2244"]
-	path = footprints/virginia2244
+[submodule "footprints/custom"]
+	path = footprints/custom
 	url = git@github.com:Virginia2244/ergogen_footprints.git
