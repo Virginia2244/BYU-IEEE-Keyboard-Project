@@ -28,25 +28,25 @@ points:
       columns:
         pinky:
           key:
-            column_net: P0
+            col_net: P0
         ring:
           key:
             splay: -5
             origin: [-12, -19]
             stagger: 12
-            column_net: P1
+            col_net: P1
         middle:
           key:
             stagger: 5
-            column_net: P2
+            col_net: P2
         index:
           key:
             stagger: -6
-            column_net: P3
+            col_net: P3
         inner:
           key:
             stagger: -2
-            column_net: P4
+            col_net: P4
       rows:
         bottom:
           row_net: P6
@@ -68,7 +68,7 @@ points:
             splay: -28
             origin: [-11.75, -9]
             col_net: P3
-        far:
+        far: 
           key:
             spread: 21.25
             splay: -28
@@ -134,7 +134,7 @@ pcbs:
           reverse: true
           hotswap: true
           traces: true
-          from: "{{column_net}}"
+          from: "{{col_net}}"
           to: "{{colrow}}"
       diode:
         what: custom/footprints/diode
