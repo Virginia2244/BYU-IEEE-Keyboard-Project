@@ -144,7 +144,7 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           shift: [3, -(cy/2 - 1.2)]
-          rotate: 180
+          rotate: 0
       microcontroller:
         what: custom/footprints/seeed_xaio
         params:
