@@ -3,7 +3,7 @@ metadata:
   version: 0.1
   author: Carter Pollan
   contact: carter.pollan@gmail.com
-  
+
 units:
   default_stagger: 0
   default_spread: 'cx'
@@ -17,7 +17,10 @@ units:
   px: cx - 7
   py: ky
   ledy: -cx/2 + 3
-  feet_rad: 2
+  feet_rad: 3.25
+  feet_offset: 1
+  case_thickness: 2
+  case_offset: .3
 
 points:
   zones:
@@ -165,58 +168,101 @@ outlines:
     name: faceplateKeys
   case_inner:
   - name: board
-    expand: .7
+    expand: case_offset
   case_outer:
   - name: board
-    expand: 3
+    expand: case_offset + case_thickness
+  case_trrs:
+  - what: polygon
+    operation: stack
+    points:
+    - ref: matrix_inner_bottom
+      shift: [px*2,-8]
+    - ref: matrix_inner_bottom
+      shift: [px*4,-8]
+    - ref: matrix_inner_bottom
+      shift: [px*4,2]
+    - ref: matrix_inner_bottom
+      shift: [px*2,2]
+  case_usbc:
+  - what: polygon
+    operation: stack
+    points:
+    - ref: matrix_inner_top
+      shift: [px*2 -2-4.5,5]
+    - ref: matrix_inner_top
+      shift: [px*2 -2+4.5, 5]
+    - ref: matrix_inner_top
+      shift: [px*2-2+4.5,13]
+    - ref: matrix_inner_top
+      shift: [px*2-2-4.5,13]
   case_edge:
   - name: case_outer
-  - operation: subtract
-    name: case_inner
+  - -case_inner
+  - -case_trrs
+  - -case_usbc
+  case_test:
+  - name: case_outer
+  - -case_usbc
 
   case_feet_one:
   - what: circle
     where:
     - ref: matrix_pinky_top
-      shift: [-cx/2,cy/2]
+      shift: [-cx/2 + feet_offset,cy/2 - feet_offset]
     radius: feet_rad
   case_feet_two:
   - what: circle
     where:
-    - ref: matrix_inner_top
-      shift: [cx*3/2+2,cy/2]
+    - ref: matrix_middle_top
+      shift: [-cx/2 + feet_offset,cy/2 - feet_offset]
     radius: feet_rad
   case_feet_three:
   - what: circle
     where:
-    - ref: thumbfan_far_thumb
-      shift: [cx/2,cx/2]
+    - ref: matrix_inner_top
+      shift: [cx*3/2 + feet_offset,cy/2 - feet_offset]
     radius: feet_rad
   case_feet_four:
   - what: circle
     where:
     - ref: thumbfan_far_thumb
-      shift: [cx/2,-cx/2]
+      shift: [cx/2 - feet_offset,cx/2 - feet_offset]
     radius: feet_rad
   case_feet_five:
   - what: circle
     where:
+    - ref: thumbfan_far_thumb
+      shift: [cx/2 - feet_offset,-cx/2 + feet_offset]
+    radius: feet_rad
+  case_feet_six:
+  - what: circle
+    where:
     - ref: matrix_pinky_bottom
-      shift: [-cx/2,-cx/2]
+      shift: [-cx/2 + feet_offset,-cx/2 + feet_offset]
     radius: feet_rad
 
   case_outer_feet:
   - name: case_outer
-  - operation: subtract
-    name: case_feet_one
-  - operation: subtract
-    name: case_feet_two
-  - operation: subtract
-    name: case_feet_three
-  - operation: subtract
-    name: case_feet_four
-  - operation: subtract
-    name: case_feet_five
+  - -case_feet_one
+  - -case_feet_two
+  - -case_feet_three
+  - -case_feet_four
+  - -case_feet_five
+  - -case_feet_six
+
+cases:
+  case:
+  - what: outline
+    name: case_outer_feet
+    extrude: -.5
+    operation: add
+  - what: outline
+    name: case_outer
+    extrude: 1.5
+  - what: outline
+    name: case_edge
+    extrude: 10
 
 pcbs:
   boardPcb:
@@ -261,20 +307,3 @@ pcbs:
           ref: matrix_inner_bottom
           shift: [px*2 + 9, -3]
           rotate: -90
-
-cases:
-  faceplate:
-  - what: outline
-    name: faceplate
-    extrude: 1
-  case:
-  - what: outline
-    name: case_outer_feet
-    extrude: -1
-    operation: add
-  - what: outline
-    name: case_outer
-    extrude: 1
-  - what: outline
-    name: case_edge
-    extrude: 5
