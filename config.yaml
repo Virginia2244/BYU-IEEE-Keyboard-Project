@@ -30,7 +30,6 @@ points:
         spread: cx
       anchor:
         rotate: 5
-        shift: [150, -100]
       columns:
         pinky:
           key:
@@ -204,7 +203,6 @@ outlines:
   case_test:
   - name: case_outer
   - -case_usbc
-
   case_feet_one:
   - what: circle
     where:
@@ -241,28 +239,26 @@ outlines:
     - ref: matrix_pinky_bottom
       shift: [-cx/2 + feet_offset,-cx/2 + feet_offset]
     radius: feet_rad
-
   case_outer_feet:
-  - name: case_outer
-  - -case_feet_one
-  - -case_feet_two
-  - -case_feet_three
-  - -case_feet_four
-  - -case_feet_five
-  - -case_feet_six
+  - name: case_feet_one
+  - +case_feet_two
+  - +case_feet_three
+  - +case_feet_four
+  - +case_feet_five
+  - +case_feet_six
 
 cases:
   case:
   - what: outline
+    name: case_outer
+    extrude: 2
+  - what: outline
+    name: case_edge
+    extrude: 12
+  - what: outline
     name: case_outer_feet
     extrude: -.5
     operation: add
-  - what: outline
-    name: case_outer
-    extrude: 1.5
-  - what: outline
-    name: case_edge
-    extrude: 10
 
 pcbs:
   boardPcb:
