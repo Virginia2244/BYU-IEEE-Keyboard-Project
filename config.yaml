@@ -19,8 +19,9 @@ units:
   ledy: -cx/2 + 3
   feet_rad: 3.25
   feet_offset: 1
-  case_thickness: 2
-  case_offset: .3
+  case_thickness: 1.5
+  case_offset: .05
+  case_trrs: 4
 
 points:
   zones:
@@ -165,24 +166,43 @@ outlines:
   - name: faceplateOutline
   - operation: subtract
     name: faceplateKeys
+  microcontroller_cut_out:
+  - what: polygon
+    operation: stack
+    fillet: 3
+    points:
+    - ref: matrix_inner_top
+      shift: [cx*2, py*2]
+    - ref: matrix_inner_top
+      shift: [cx/2, py*2]
+    - ref: matrix_inner_top
+      shift: [cx/2, py]
+    - ref: matrix_inner_bottom
+      shift: [cx/2, -cy/2]
+    - ref: matrix_inner_bottom
+      shift: [cx*3 - 5,-cy/2]
+
   case_inner:
   - name: board
     expand: case_offset
   case_outer:
   - name: board
     expand: case_offset + case_thickness
+  case_PCB_support:
+  - name: board
+  - -PCB_support
   case_trrs:
   - what: polygon
     operation: stack
     points:
     - ref: matrix_inner_bottom
-      shift: [px*2,-8]
+      shift: [px*2,-case_trrs - 3]
     - ref: matrix_inner_bottom
-      shift: [px*4,-8]
+      shift: [px*4,-case_trrs - 3]
     - ref: matrix_inner_bottom
-      shift: [px*4,2]
+      shift: [px*4,case_trrs - 3]
     - ref: matrix_inner_bottom
-      shift: [px*2,2]
+      shift: [px*2,case_trrs - 3]
   case_usbc:
   - what: polygon
     operation: stack
@@ -198,11 +218,13 @@ outlines:
   case_edge:
   - name: case_outer
   - -case_inner
-  - -case_trrs
-  - -case_usbc
+  - -microcontroller_cut_out
+  case_edge_full:
+  - name: case_outer
+  - -case_inner
   case_test:
   - name: case_outer
-  - -case_usbc
+  - -microcontroller_cut_out
   case_feet_one:
   - what: circle
     where:
@@ -254,11 +276,17 @@ cases:
     extrude: 2
   - what: outline
     name: case_edge
-    extrude: 12
+    extrude: 7.8
+  - what: outline
+    name: case_PCB_support
+    extrude: 4
+  - what: outline
+    name: case_edge_full
+    extrude: 5.7
   - what: outline
     name: case_outer_feet
-    extrude: -.5
-    operation: add
+    extrude: .5
+    operation: subtract
 
 pcbs:
   boardPcb:
