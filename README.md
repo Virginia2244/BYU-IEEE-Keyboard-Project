@@ -15,3 +15,5 @@ A description of the differnt files in the repository
 ### points_demo.yaml
  - This file is the yaml for the pointmap I made live in the IEEE club. It is a good example of using metatdata and points and a rather poor example of using units. It is not perfect and should not be used as the basis of a keyboard but rather an example of how to use the funcitons and paramaters of Ergogen.
  
+## QMK
+Starting with the QMK docs can be really difficult. What you are going to want to do after you set up the QMK firmwar is run `qmk new-keyboard` and it will walk you through the steps of how to build your firmware.
