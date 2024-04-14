@@ -1,13 +1,18 @@
 # BYU-IEEE-Keyboard-Project
-This is the template for both the Ergogen file and the QMK firmware that the BYU IEEE club will be using to create custom keyboards.
+This is the template for both the Ergogen file and the QMK firmware that the BYU IEEE club uses to create custom keyboards.
 
 ## Resources
+### Websites
+ - [Ergogen Unofficial](https://ergogen.cache.works/)
+ - [Ergogen Official](https://ergogen.xyz/)
+ - [QMK](https://qmk.fm/)
+### Docs
+ - [Ergogen Docs](https://docs.ergogen.xyz/)
+ - [QMK Docs](https://docs.qmk.fm/#/)
+### Guides
  - [Ergogen guide by FlatFootFox](https://flatfootfox.com/ergogen-introduction/)
-  - [Ergogen Official Website](https://ergogen.xyz/)
-  - [Ergogen Auto Layout](https://pashutk.com/ergopad/)
-  - [Ergogen Unofficial Website](https://ergogen.cache.works/)
-  - [Ergogen Docs](https://docs.ergogen.xyz/)
- - [QMK Firmware](https://qmk.fm/)
+### Tools
+ - [Ergogen Auto Layout](https://pashutk.com/ergopad/)
  ## Ergogen
 Ergogen is a platform that will take the dificult parts of designing a keyboard and gets you 90% of the way there with one web tool. You can use it to design a pcb, case, and face plate. One of the dificult things about it is that it recently updated to v4.0, which has breaking changes to the way it works, but the official docs has been mostly updated but isn't complete. To get a better understaning of ergogen and how to use it well read the [Ergogen guide by FlatFootFox](https://flatfootfox.com/ergogen-introduction/). This is a great introduciton to ergogen and how to use it to make a keyboard.
 ### Ergogen Auto Layout
