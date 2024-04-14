@@ -27,32 +27,32 @@ points:
       columns:
         pinky:
           key:
-            col_net: P0
+            col_net: P3
         ring:
           key:
             splay: -5
             origin: [-12, -19]
             stagger: 10
-            col_net: P1
+            col_net: P4
         middle:
           key:
             stagger: 6
-            col_net: P2
+            col_net: P5
         index:
           key:
             stagger: -7
-            col_net: P3
+            col_net: P6
         inner:
           key:
             stagger: -2
-            col_net: P4
+            col_net: P7
       rows:
         bottom:
-          row_net: P6
+          row_net: P20
         home:
-          row_net: P7
+          row_net: P19
         top:
-          row_net: P8
+          row_net: P18
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
@@ -60,22 +60,22 @@ points:
       columns:
         near:
           key:
-            col_net: P2
+            col_net: P5
         home:
           key:
             spread: 0
             splay: -14.5
             origin: [0, -80]
-            col_net: P3
+            col_net: P6
         far: 
           key:
             spread: 0
             splay: -14.5
             origin: [0, -80]
-            col_net: P4
+            col_net: P7
       rows:
         thumb:
-          row_net: P5
+          row_net: P15
   rotate: -15
 
 outlines:
@@ -285,20 +285,89 @@ pcbs:
           shift: [3, -(cy/2 - 1.2)]
           rotate: 0
       microcontroller:
-        what: custom/footprints/seeed_xaio
+        what: custom/footprints/promicro
         params:
+          reversable_pins: 5
         where:
           ref: matrix_inner_top
-          shift: [2*px - 2, -.5]
+          shift: [2*px - 2, -5.25]
       audio:
-        what: trrs
+        what: custom/footprints/trrs
         params:
-          A: "VCC"
-          B: "GND"
-          C: "P9"
-          D: "P10"
+          A: "P2"
+          B: "P21"
+          C: "VCC"
+          D: "GND"
           reverse: true
+          symmetric: true
         where:
-          ref: matrix_inner_bottom
-          shift: [px*2 + 9, -3]
+          ref: matrix_inner_home
+          shift: [px*2 + 9, -9.5]
           rotate: -90
+      rgb1:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: P10
+          dout: rgb2
+        where:
+          ref: matrix_inner_home
+          shift: [2.5*px, -15.5]
+          rotate: 90
+      rgb2:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: rgb2
+          dout: rgb3
+        where:
+          ref: thumbfan_far_thumb
+          shift: [6, -6]
+      rgb3:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: rgb3
+          dout: rgb4
+        where:
+          ref: thumbfan_near_thumb
+          shift: [-6, -6]
+      rgb4:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: rgb4
+          dout: rgb5
+        where:
+          ref: matrix_middle_bottom
+          shift: [-7, -30]
+          rotate: -10
+      rgb5:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: rgb5
+          dout: rgb6
+        where:
+          ref: matrix_pinky_bottom
+          shift: [-6, -6]
+      rgb6:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: rgb6
+          dout: rgb7
+        where:
+          ref: matrix_pinky_top
+          shift: [7, 13]
+          rotate: 20 + 180
+      rgb7:
+        what: custom/footprints/rgb
+        params:
+          reverse: true
+          din: rgb7
+          dout: P1
+        where:
+          ref: matrix_index_top
+          shift: [-3, 12]
+          rotate: -15 + 180
